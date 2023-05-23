@@ -2,40 +2,39 @@
 #include <stdio.h>
 
 /**
- * print_to_98 - Print numbers from n to 98
- * @n: Reference value
+ * print_to_98 - Print all naturel numbers from n to 98, followed by a new line
+ * @n: print from this number
  */
 
 void print_to_98(int n)
 {
-	int stop = 98;
-	int i = 0;
+	int i, j;
 
-	if (n >= stop)
+	if (n <= 98)
 	{
-		for (i = n; i >= stop; i--)
+		for (i = n; i <= 98; i++)
 		{
 			if (i != 98)
 			{
 				printf("%d, ", i);
 			}
-			else
+			else if (i == 98)
 			{
-				printf("%d", i);
+				printf("%d\n", i);
 			}
 		}
 	}
-	else
+	else if (n >= 98)
 	{
-		for (i = n; i >= stop; i++)
+		for (j = n; j >= 98; j--)
 		{
-			if (i != 98)
+			if (j != 98)
 			{
-				printf("%d, ", i);
+				printf("%d, ", j);
 			}
-			else
+			else if (j == 98)
 			{
-				printf("%d", i);
+				printf("%d\n", j);
 			}
 		}
 	}
