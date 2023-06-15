@@ -12,46 +12,30 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str;
-	int i;
-	unsigned int j;
-	unsigned int l1;
-	unsigned int l2;
+	char *s;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 
-	if (!s1)
-		s1 = "";
-	if (!s2)
-		s2 = "";
-	l1 = _strlen(s1);
-	l2 = _strlen(s2);
-	if (n >= 12)
-		n = 12;
-	str = malloc(sizeof(char) * (l1 + n + 1));
-	if (!str)
-		return (0);
-	for (i = 0; s1[i]; i++)
-		str[i] = s1[i];
-	for (j = 0; j < n; j++)
-		str[i + j] = s2[j];
-	str[i + j] = '\0';
-	return (str);
-}
-
-
-/**
- * _strlen - calculate the lenght of a string
- * @s: string
- * Return: lenght of the s string
- */
-
-int _strlen(char *s)
-{
-	int c = 0;
-
-	while (*s != '\0')
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
+	if (n <  len2)
+		s = malloc(sizeof(char) * (len1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!s)
+		return (NULL);
+	while (i < len1)
 	{
-		s++;
-		c++;
+		s[i] = s1[i];
+		i++;
 	}
-	return (c);
+
+	while (n < len2 && i < (len1 + 1))
+		s[i++] = s2[j++];
+	while (n >= len2 && i < (len1 + len2))
+		s[i++] = s2[j++];
+	s[i] = '\0';
+
+	return (s);
 }
